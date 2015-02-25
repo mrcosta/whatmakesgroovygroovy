@@ -45,4 +45,23 @@ class ListsSpec extends Specification {
         numbersFiltered == [4, 5, 6]
     }
 
+    def "should show another way to add an element inside a list"() {
+        when:
+        def list = [1, 2, 3] << 4
+
+        then:
+        list == [1, 2, 3, 4]
+    }
+
+    def "should show the inverse index for a list"() {
+        given:
+        def numbers = [1, 2, 3, 4]
+
+        when:
+        def lastElement = numbers[-1]
+
+        then:
+        lastElement == 4
+    }
+
 }
