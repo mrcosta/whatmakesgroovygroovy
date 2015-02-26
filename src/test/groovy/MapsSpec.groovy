@@ -11,6 +11,7 @@ class MapsSpec extends Specification {
 
         when:
         def myName = clients.find {it.key == "x210001"}.value
+        //def myName = clients.find {it.value == "x210001"}.value
 
         then:
         myName == "mateus"
@@ -18,13 +19,15 @@ class MapsSpec extends Specification {
 
     def "should show another way to access a position in a groovy map"() {
         given:
-        def clients = ["x210001": "mateus", "x210002": "juca", "x210003": "pedro"]
+        def clients = ["x210001": "mateus", "x210002": "juca", "x210003": "pedro", "x": { a, b -> a + b}]
 
         when:
         def specificName = clients["x210003"]
+        def closure = clients["x"]
 
         then:
         specificName == "pedro"
+        closure(1, 2) == 3
     }
 
     def "should show a more complex structure that represent a json"() {
@@ -39,6 +42,7 @@ class MapsSpec extends Specification {
                     scheduleTime: "11:00",
                     proposedTime: "11:30",
                 ]
+
             ]
         ]
 

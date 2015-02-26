@@ -1,3 +1,4 @@
+import org.junit.Ignore
 import spock.lang.Specification
 
 /**
@@ -5,7 +6,7 @@ import spock.lang.Specification
  */
 class GroovyTruth extends Specification {
 
-    def "should show how some assertions with false value works"() {
+    def "should show how some assertions with false value wor(ks"() {
         when:
         def checkNull = null
         def list = []
@@ -19,17 +20,27 @@ class GroovyTruth extends Specification {
         !zero
     }
 
-    def "should show how some assertions with true value works"() {
+
+    /*def "should show how some assertions with true #value works"(value) {
+        given:
+        def x = true
+
         when:
-        def checkNull = new Object()
-        def list = [1, 2]
-        def emptyString = "moises"
-        def zero = 1
+        def y = x
 
         then:
-        checkNull
-        list
-        emptyString
-        zero
+        value == x
+
+        where:
+        value |
+        new Object()
+        [1]
+        "moises"
+        1
+    }*/
+
+    def "test"() {
+        expect:
+        1 == 1 - 0
     }
 }

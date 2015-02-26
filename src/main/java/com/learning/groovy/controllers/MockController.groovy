@@ -1,16 +1,13 @@
 package com.learning.groovy.controllers
-
-import com.learning.groovy.services.MockService
-
 /**
  * Created by mateus on 2/25/15.
  */
 class MockController {
 
-    def mockService
+    def titleService
 
     def getTitles() {
-        def titlesRetrieved = mockService.retrieveTitles();
+        def titlesRetrieved = titleService.retrieveTitles();
 
         return titlesRetrieved << "go moises"
     }

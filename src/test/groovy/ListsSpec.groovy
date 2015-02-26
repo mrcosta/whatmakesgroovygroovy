@@ -28,8 +28,12 @@ class ListsSpec extends Specification {
             copyNumbers.add(it)
         }
 
+        //def map = ["222": "mateus"]
+        //map["222"]
+
         then:
         numbers == copyNumbers
+        numbers[0] == 1
     }
 
     def "should show how to filter elements inside a list in groovy"() {
@@ -48,9 +52,10 @@ class ListsSpec extends Specification {
     def "should show another way to add an element inside a list"() {
         when:
         def list = [1, 2, 3] << 4
+        list.add(5)
 
         then:
-        list == [1, 2, 3, 4]
+        list == [1, 2, 3, 4, 5]
     }
 
     def "should show the inverse index for a list"() {

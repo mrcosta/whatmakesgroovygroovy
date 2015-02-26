@@ -31,9 +31,41 @@ class ClosuresSpec extends Specification {
         ]
 
         when:
+        def result = persons.findAll { filter(it) }.collect { it.name.toUpperCase() }.sort().join(", ")
+
+        then:
+        result == "MOISES"
+    }
+
+    def filter(def it) {
+        it.age < 18 && it.name == "moises"
+    }
+
+    def "should show how a method to retrieve a attribute works in groovy"() {
+        given:
+        def person = new Person(name: "moises", age: 8)
+        //new Person(name: "moises")
+
+        when:
+        def propertieDirectly = person.name
+        def propertieWithGet = person.getName()
+
+        then:
+        propertieDirectly == propertieWithGet
+    }
+
+    /*def "should retrieve a list with the"() {
+        given:
+        def persons = [
+            new Person(name: "juca", age: 18),
+            new Person(name: "pedro", age: 7),
+            new Person(name: "moises", age: 8),
+        ]
+
+        when:
         def result = persons.findAll { it.age < 18 }.collect { it.name.toUpperCase() }.sort().join(", ")
 
         then:
         result == "MOISES, PEDRO"
-    }
+    }*/
 }

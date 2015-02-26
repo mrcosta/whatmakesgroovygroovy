@@ -11,6 +11,8 @@ class ElvisSpec extends Specification {
         //               canMoises ? canMoises : "No, he can't"
         def moisesName = canMoises ?: "No, he can't"
 
+        //if (canM)
+
         then:
         moisesName == answer
 

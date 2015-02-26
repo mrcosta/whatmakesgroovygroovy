@@ -1,5 +1,5 @@
 import com.learning.groovy.controllers.MockController
-import com.learning.groovy.services.MockService
+import com.learning.groovy.services.TitleService
 import spock.lang.Specification
 
 /**
@@ -9,15 +9,16 @@ class MockSpec extends Specification {
 
     def "should show how a spec that mock something works"() {
         given:
-        MockController controller = new MockController(mockService: Mock(MockService))
+        MockController controller = new MockController(titleService: Mock(TitleService))
+        1 * controller.titleService.retrieveTitles() >> ["birdman"]
 
         when:
         def result = controller.getTitles()
 
-        then:
-        1 * controller.mockService.retrieveTitles() >> ["birdman"]
+        //then:
 
-        and:
+
+        then:
         result == ["birdman", "go moises"]
     }
 }

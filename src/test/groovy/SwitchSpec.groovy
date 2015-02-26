@@ -30,5 +30,6 @@ class SwitchSpec extends Specification{
         1            | 1
         "mateus"     | "that's my name"
         [1, 2, 3, 3] | "size is 2"
+        "1233"       | "unknow"
     }
 }
