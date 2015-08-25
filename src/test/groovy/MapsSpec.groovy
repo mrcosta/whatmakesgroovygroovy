@@ -52,4 +52,15 @@ class MapsSpec extends Specification {
         then:
         departure == [scheduleTime: "11:00", proposedTime: "11:30"]
     }
-}
+
+    def "should transform a list into a map "() {
+        given:
+        def list = ["mateus", "moises", "giovanna"]
+        def map = [:]
+
+        when:
+        list.eachWithIndex{ entry, i -> map["$i"] = entry }
+
+       then:
+        map == ["0": "mateus", "1": "moises", "2": "giovanna"]
+    }}
